@@ -1,4 +1,7 @@
-# Genyus Network - Accessible Interface Repository
+<h1 align="center">Genyus Network - Accessible Interface Repository</h1>
+<p align="center">
+    <img src="logo.png" alt="logo" width="200"/>
+</p>
 
 ## Project Overview
 
