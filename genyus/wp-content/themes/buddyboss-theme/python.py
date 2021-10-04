@@ -59,6 +59,7 @@ def convert_text(text, summariser, spell_checker, verbose=False):
     if verbose: print("Word count:", word_count, end='\n\n')
 
     min_words = int(np.ceil(word_count * summary_min_length_ratio))
+        
     if verbose: print(" Min words:", min_words, end='\n\n')
 
     max_words = int(np.ceil(word_count * summary_max_length_ratio))
@@ -82,10 +83,10 @@ def convert_text(text, summariser, spell_checker, verbose=False):
         simplified_translation = translator.translate(text, src="de", dest="en")
         text = simplified_translation.text
         if verbose: print("Translated back:  ", text, end='\n\n')
-        
+            
     if verbose: print("Final text:       ", text, end='\n\n')
         
-    if verbose: print("-------------------------------------------------------------------------------------", end='\n')
+   # if verbose: print("-------------------------------------------------------------------------------------", end='\n')
         
     return text
 
