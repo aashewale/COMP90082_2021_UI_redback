@@ -92,16 +92,22 @@ jQuery("#btn_Post").click(function(){
 		
 jQuery("#btn_Post").click(function(){
     var $this = jQuery(this);
-if(jQuery("#btn_Post").hasClass('NoText'))
+    if(jQuery("#btn_Post").hasClass('NoText')) //have to implement onclick
 	{
 		
 	jQuery.ajax({
+        type: "POST",
     url: '<?php echo get_site_url();?>/wp-content/themes/buddyboss-theme/python.php',
 		   error: function(XMLHttpRequest, textStatus, errorThrown) {
       alert(errorThrown);
     },
+        async:open,
+        data:{
+          post_content: jQuery("#post_content_525_ifr").contents().find('body').text(),
+        },
+        
     success: function(data){
-        //alert(data);
+        //alert(jQuery("#post_content_525_ifr").contents().find('body').text());
 		   //jQuery(".aphasia-text").html("");
 		   jQuery(".wpuf_post_excerpt_525").val(data);
     }
