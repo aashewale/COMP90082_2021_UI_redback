@@ -160,6 +160,9 @@ global $post;
 				</div>
 			<br>
 			<br>
+			<div class="checkmark">checkbox</div>
+			
+			<br>
 			<br>
 
 			<div class="entry-content aphasia-text" style="display: none;">

@@ -8,6 +8,15 @@ Make sure to respect the media queries! Otherwise you may
 accidentally add desktop styles to the mobile layout.
 https://www.w3schools.com/css/css_rwd_mediaqueries.asp
 --------------------------------------------------------------*/
+.checkmark {
+  display: inline-block;
+  transform: rotate(45deg);
+  height: 25px;
+  width: 12px;
+  margin-left: 60%; 
+  border-bottom: 7px solid #78b13f;
+  border-right: 7px solid #78b13f;
+}
 
 .element {
   text-shadow: 0 0 3px #000000;
