@@ -154,14 +154,40 @@ global $post;
 				  <input type="checkbox" id="text-toggle">
 				  <span class="slider round"></span>
 				</label> -->
-				<div class="element blue">
-					 <img src="https://i.imgur.com/5pd5ZnP.png" alt="'Aphasia toggle'" width="64" style="vertical-align:top"> 
+				<div class="element blue" id="aphasiabtn">
+					 <img src="https://i.imgur.com/o9u4B9Q.png" alt="'Aphasia toggle'" width="32" style="vertical-align:top"> 
 					 <span class="bold"> Make </span> This <span class="bold"> Easier</span> To <span class="bold"> Read </span> 
 				</div>
+
+				&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+				<div class="element blue" id="unsurebtn"> 
+					<img src="https://i.imgur.com/hANyN8v.png" alt="'Aphasia text report'" width="32" style="vertical-align:top"> I'm Still Unsure 
+				</div>
+				
+				<!-- TESTING ! -->
+				
+				<div id="ex1" class="modal">
+				  <p> Make your voice heard!</p>
+			  	  <form>
+				  	<input id="inputname" type="text" placeholder="name" value="">
+				  	<input id="inputmsg" type="text" placeholder="what's wrong?" value="">
+				  	<a href="" id="ex2" class="button"> Submit </a>
+				  </form>
+				</div>
+
+				<!-- <div class="bg-modal">
+					<div class="modal-content">
+						<div class="close"> x </div>
+						<form>
+							<input class="inputform" type="text" placeholder="name">
+							<input class="inputform" type="text" placeholder="what's wrong?">
+							<a href="" class="button"> Submit </a>
+						</form>
+					</div>
+				</div> -->
+
 			<br>
-			<br>
-			<div class="checkmark">checkbox</div>
-			
 			<br>
 			<br>
 

@@ -29,85 +29,106 @@
 
 <?php do_action( THEME_HOOK_PREFIX . 'after_page' ); ?>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+
 <script type="text/javascript">
 
 	jQuery(document).ready(function(){
-	
-jQuery("article .element.blue").click(function(){
+
+jQuery("article #aphasiabtn").click(function(){
     var $this = jQuery(this);
     if($this.data('clicked')) {
-        jQuery("article .element.blue").addClass('LightBlue');
-		jQuery("article .element.blue").removeClass('DarkBlue');
+		jQuery("article #aphasiabtn").removeClass('DarkBlue');
 		$this.data('clicked', false);
 		
 		jQuery.ajax({
-    type: "POST",
-    dataType: "html",
-    url: '<?php echo get_site_url();?>/wp-content/themes/buddyboss-theme/getmessage.php',
-    data: {"id":<?php echo get_the_ID();?>,'field':'post_content'},
-		   error: function(XMLHttpRequest, textStatus, errorThrown) {
-      alert(errorThrown);
-    },
-    success: function(data){
-        //alert(data);
-		   //jQuery(".aphasia-text").html("");
-		   jQuery(".aphasia-text").html(data);
-    }
-});
+		    type: "POST",
+		    dataType: "html",
+		    url: '<?php echo get_site_url();?>/wp-content/themes/buddyboss-theme/getmessage.php',
+		    data: {"id":<?php echo get_the_ID();?>,'field':'post_content'},
+				   error: function(XMLHttpRequest, textStatus, errorThrown) {
+		      alert(errorThrown);
+		    },
+		    success: function(data){
+		        //alert(data);
+				   //jQuery(".aphasia-text").html("");
+				   jQuery(".aphasia-text").html(data);
+		    }
+		});
 		
     }
     else {
-		jQuery("article .element.blue").removeClass('LightBlue');
         $this.data('clicked', true);
-        jQuery("article .element.blue").addClass('DarkBlue');
+        jQuery("article #aphasiabtn").addClass('DarkBlue');
 		
 		jQuery.ajax({
-    type: "POST",
-    dataType: "html",
-    url: '<?php echo get_site_url();?>/wp-content/themes/buddyboss-theme/getmessage.php',
-    data: {"id":<?php echo get_the_ID();?>,'field':'post_excerpt'},
-		   error: function(XMLHttpRequest, textStatus, errorThrown) {
-      alert(errorThrown);
-    },
-    success: function(data){
-        //alert(data);
-		   //jQuery(".aphasia-text").html("");
-		   jQuery(".aphasia-text").html(data);
+		    type: "POST",
+		    dataType: "html",
+		    url: '<?php echo get_site_url();?>/wp-content/themes/buddyboss-theme/getmessage.php',
+		    data: {"id":<?php echo get_the_ID();?>,'field':'post_excerpt'},
+				   error: function(XMLHttpRequest, textStatus, errorThrown) {
+		      alert(errorThrown);
+		    },
+		    success: function(data){
+		        //alert(data);
+				   //jQuery(".aphasia-text").html("");
+				   jQuery(".aphasia-text").html(data);
+		    }
+		});
+			
     }
 });
-	
-    }
-});
+	jQuery('#post_excerpt_525').on('input', function() {
+		if(!jQuery("#post_excerpt_525").hasClass('WarningText')){
+			confirm('WARNING -- There is already text in this textbox, are u sure u want to override it?');
+			jQuery("#post_excerpt_525").addClass('WarningText');
+			}
+	});
 
-		/*add aphasia text in form field*/
-
-jQuery("#btn_Post").click(function(){
+/* I'm still unsure button */
+jQuery("#unsurebtn").click(function(){
 	var $this = jQuery(this);
-	if(jQuery("#btn_Post").data('clicked'))
+	if(jQuery("#unsurebtn").data('clicked'))
 		{
-			alert('btn');
+			jQuery("#unsurebtn").removeClass('DarkBlue');
+			$this.data('clicked', false);
+			jQuery('#unsurebtn').html(jQuery("#inputname").value);
+		}
+	else 
+		{
+			$this.data('clicked', true);
+			jQuery("#unsurebtn").addClass('DarkBlue');
+			$("#ex1").modal()
+			$("#unsurebtn").html("Thanks for the feedback!");
+			// alert('btn clicked');
+			// jQuery(".close").html("click working");
+			// $(".bg-modal").style.display = "flex";  <-- not running(css?)
+
 		}
 	
 })
-		
+
+/*add aphasia text in form field*/
 jQuery("#btn_Post").click(function(){
     var $this = jQuery(this);
-    if(jQuery("#btn_Post").hasClass('NoText')) //have to implement onclick
+if(jQuery("#btn_Post").hasClass('NoText'))
 	{
 		
 	jQuery.ajax({
-        type: "POST",
+		type: "POST",
     url: '<?php echo get_site_url();?>/wp-content/themes/buddyboss-theme/python.php',
 		   error: function(XMLHttpRequest, textStatus, errorThrown) {
       alert(errorThrown);
     },
-        async:open,
+	async:open,
         data:{
           post_content: jQuery("#post_content_525_ifr").contents().find('body').text(),
         },
         
     success: function(data){
-        //alert(jQuery("#post_content_525_ifr").contents().find('body').text());
+        //alert(data);
 		   //jQuery(".aphasia-text").html("");
 		   jQuery(".wpuf_post_excerpt_525").val(data);
     }
