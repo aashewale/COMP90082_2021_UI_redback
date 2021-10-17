@@ -119,7 +119,6 @@ if ( ! function_exists( 'wp_body_open' ) ) {
 
 //python script 
 
-
 /* Plugin Name: Python embedded */
 
 add_shortcode( 'python', 'embed_python' );
@@ -145,9 +144,6 @@ function embed_python( $attributes )
 
     return $read;
 }
-
-
-
 
 /**
  * Load deprecated functions.
