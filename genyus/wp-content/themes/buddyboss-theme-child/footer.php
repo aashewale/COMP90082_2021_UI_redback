@@ -18,6 +18,10 @@
 </div><!-- #content -->
 
 <?php do_action( THEME_HOOK_PREFIX . 'after_content' ); ?>
+
+
+
+
 <?php do_action( THEME_HOOK_PREFIX . 'before_footer' ); ?>
 <?php do_action( THEME_HOOK_PREFIX . 'footer' ); ?>
 <?php do_action( THEME_HOOK_PREFIX . 'after_footer' ); ?>
@@ -32,7 +36,7 @@
 
 <script type="text/javascript">
 
-jQuery(document).ready(function(){
+	jQuery(document).ready(function(){
 
 jQuery("article #aphasiabtn").click(function(){
     var $this = jQuery(this);
@@ -49,6 +53,8 @@ jQuery("article #aphasiabtn").click(function(){
 		      alert(errorThrown);
 		    },
 		    success: function(data){
+		        //alert(data);
+				   //jQuery(".aphasia-text").html("");
 				   jQuery(".aphasia-text").html(data);
 		    }
 		});
@@ -67,6 +73,8 @@ jQuery("article #aphasiabtn").click(function(){
 		      alert(errorThrown);
 		    },
 		    success: function(data){
+		        //alert(data);
+				   //jQuery(".aphasia-text").html("");
 				   jQuery(".aphasia-text").html(data);
 		    }
 		});
@@ -74,17 +82,60 @@ jQuery("article #aphasiabtn").click(function(){
     }
 });
 
+	//have to delete
 	jQuery('#post_excerpt_525').on('click', function() {
 	if(!jQuery("#post_excerpt_525").hasClass('WarningText')){
+	//confirm('WARNING -- There is already text in this textbox, are you sure you want to override it?');
 	alert('WARNING -- There is already text in this textbox, are you sure you want to override it?');
+		//$('#edited_author_output_525').val($(this).val());
 
 		$('.wpuf_author_approved_525')[1].checked = true;
 		$('.wpuf_author_approved_525')[0].checked = false;
+
 		$('.wpuf_fully_automatic_525')[0].checked = true;
-		$('.wpuf_fully_automatic_525')[1].checked = false;		
+		$('.wpuf_fully_automatic_525')[1].checked = false;
+		//jQuery("#post_excerpt_525").prop("disabled", "disabled");
+		
 		jQuery("#post_excerpt_525").addClass('WarningText');
 		}
 		});
+
+		// //important main one
+		// jQuery('#post_excerpt_525').on('click', function() {
+		// if(!jQuery("#post_excerpt_525").hasClass('WarningText')){
+		// if(!confirm('WARNING -- There is already text in this textbox, are u sure u want to override it?')){
+		// 			$('#edited_author_output_525').val($(this).val());
+
+		// $('.wpuf_author_approved_525')[1].checked = true;
+		// $('.wpuf_author_approved_525')[0].checked = false;
+
+		// $('.wpuf_fully_automatic_525')[0].checked = true;
+		// $('.wpuf_fully_automatic_525')[1].checked = false;
+		// jQuery("#post_excerpt_525").prop("disabled", "disabled");
+		// }
+		// jQuery("#post_excerpt_525").addClass('WarningText');
+		// }
+		// });
+
+		//test
+			// jQuery('#post_excerpt_525').on('click', function() {
+			// if(!jQuery("#post_excerpt_525").hasClass('WarningText')){			
+			// if(confirm('WARNING -- There is already text in this textbox, are u sure u want to override it?')){
+			// $('#edited_author_output_525').val($(this).val());
+
+			// $('.wpuf_author_approved_525')[1].checked = true;
+			// $('.wpuf_author_approved_525')[0].checked = false;
+
+			// $('.wpuf_fully_automatic_525')[0].checked = true;
+			// $('.wpuf_fully_automatic_525')[1].checked = false;
+			// }
+            // else{
+            //     jQuery("#post_excerpt_525").prop("disabled", "disabled");        
+            //     }
+			// jQuery("#post_excerpt_525").addClass('WarningText');
+			// }
+			// });
+		
 
 /* I'm still unsure button */
 jQuery("#unsurebtn").click(function(){
@@ -101,6 +152,10 @@ jQuery("#unsurebtn").click(function(){
 			//jQuery("#unsurebtn").addClass('DarkBlue');
 			$("#ex1").modal()
 			$("#unsurebtn").html("Thanks for the feedback!");
+			// alert('btn clicked');
+			// jQuery(".close").html("click working");
+			// $(".bg-modal").style.display = "flex";  <-- not running(css?)
+
 		}
 	
 })
@@ -146,6 +201,7 @@ jQuery("#btn_Post").click(function(){
     var $this = jQuery(this);
 if(jQuery("#btn_Post").hasClass('NoText'))
 	{
+		
 	jQuery.ajax({
 		type: "POST",
     url: '<?php echo get_site_url();?>/wp-content/themes/buddyboss-theme/python.php',
@@ -163,7 +219,9 @@ if(jQuery("#btn_Post").hasClass('NoText'))
 		   jQuery(".wpuf_post_excerpt_525").val(data); //fill it in textbox1
 		  // alert(data);
            jQuery(".wpuf_edited_author_output_525").val(data); //fill it in hidden textbox
-    }	
+    }
+		
+	
 });	
 		
 	jQuery("#btn_Post").removeClass('NoText');		
@@ -171,20 +229,31 @@ if(jQuery("#btn_Post").hasClass('NoText'))
 	}
 	else
 	{
-		//alert('not checked');
+			//alert('not checked');
 		jQuery(".wpuf_post_excerpt_525").val('');
 		jQuery("#btn_Post").addClass('NoText');
 	}
-		});				
-	});
+		
+		});	
+	
 			
+	});
+		
+		
 </script>
 <script type="text/javascript"> 
 	$('.myaphasiabtn').on('click', function(){
 		$('.approvals').toggle();
 	});
 
+	// $('#post_excerpt_525').on('blur', function(){
+	// 	$('#edited_author_output_525').val($(this).val());
+	// 	$('.wpuf_author_approved_525')[1].prop('checked', true);
+	// });
 </script>
+
+
 <?php wp_footer(); ?>
+
 </body>
 </html>
