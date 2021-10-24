@@ -108,6 +108,7 @@ if (is_singular() && !is_related_posts()):
         the_title('<h2 class="entry-title"><a href="' . esc_url(get_permalink()) . '" rel="bookmark">' . $prefix, '</a></h2>');
     endif;
     ?>
+
 				<?php if (has_post_format('link') && function_exists('buddyboss_theme_get_first_url_content') && ($first_url = buddyboss_theme_get_first_url_content($post->post_content)) != ""): ?>
 				<p class="post-main-link"><?php echo $first_url; ?></p>
 				<?php endif;?>
@@ -157,17 +158,17 @@ if (empty($post->post_excerpt)) {
 					  <input type="submit" value="Submit" id="reportsubmit" class="button">
 				  </form>
 				</div>
+			<br>
 
 
-			<div class="entry-content aphasia-text">
+			<div class="entry-content aphasia-text" style="display: none;">
 			<?php
 if (is_single() && 'post' == get_post_type()) {
         $post_id = get_the_ID();
         echo '<p>' . get_post_meta($post_id, 'message', true) . '</p>';
     }
     ?>
-			</div><br>
-
+			</div>
 			<div class="entry-content aphasia-text">
 			<?php
 the_content(sprintf(
@@ -182,6 +183,8 @@ the_content(sprintf(
     ));
     ?>
 			</div><!-- .entry-content --><br>
+
+
 			<div style="display: inline;">
 				<div class="element blue myaphasiabtn" id="aphasiabtn">
 					 <img src="https://i.imgur.com/o9u4B9Q.png" alt="'Aphasia toggle'" width="32" style="vertical-align:top">
@@ -200,15 +203,15 @@ the_content(sprintf(
 					<span style="display: inline;"><img src="<?=(get_post_meta($post_id, 'fully_automatic', true) ? site_url() . '/wp-content/uploads/2021/10/check.jpg' : site_url() . '/wp-content/uploads/2021/10/cancel.png')?>" style="width: 25px; height: 25px; margin-top: 5px;" /> Fully Automatic</span>
 				</div>
 			</div>
+
 		<?php }?>
-
 	</div>
-
+<br>
 	<?php if (!is_single() || is_related_posts()) {?>
 		</div><!--Close '.post-inner-wrap'-->
 	<?php }?>
 
-</article><!-- #post-<?php the_ID();?> --><br>
+</article><!-- #post-<?php the_ID();?> -->
 
 <?php if (is_single() && (has_category() || has_tag())) {?>
 	<div class="post-meta-wrapper">

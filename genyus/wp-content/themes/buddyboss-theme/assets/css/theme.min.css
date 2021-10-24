@@ -8170,7 +8170,7 @@ body:not(.bb-page-loaded) .post-grid.bb-masonry .hentry {
 
 .single-attachment .entry-content p,
 .single-post .entry-content p {
-    margin-bottom: 40px
+    /* margin-bottom: 40px */
 }
 
 .single-attachment .entry-content li>ol,
@@ -8188,7 +8188,8 @@ body:not(.bb-page-loaded) .post-grid.bb-masonry .hentry {
 }
 
 .single .entry-content-wrap {
-    padding: 0
+    padding: 0;
+    text-align: justify;
 }
 
 .single .entry-title {
@@ -9874,7 +9875,7 @@ img.jssocials-share-logo {
     background: #fff;
     box-shadow: 0 6px 10px 0 rgba(0, 0, 0, .06);
     border-radius: 100px;
-    padding: 15px 0;
+    /* padding: 15px 0; */
     text-align: center;
     z-index: 21
 }
